@@ -1,0 +1,15 @@
+# Maven
+/target/
+
+# Database
+*.db
+
+# JVM crash logs
+hs_err_pid*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
