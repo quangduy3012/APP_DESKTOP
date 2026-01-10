@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.calendar.controller.MainController"
+            styleClass="main-container">
+
+    <!-- Top Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="top-bar">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+            
+            <Label fx:id="welcomeLabel" text="Xin chào!" styleClass="welcome-label">
+                <font>
+                    <Font name="System Bold" size="16"/>
+                </font>
+            </Label>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <Button fx:id="logoutButton" text="Đăng xuất" onAction="#handleLogout" 
+                    styleClass="secondary-button"/>
+        </HBox>
+    </top>
+
+    <!-- Main Content -->
+    <center>
+        <SplitPane dividerPositions="0.65" styleClass="split-pane">
+            
+            <!-- Left Panel - Schedule List -->
+            <VBox spacing="15" styleClass="left-panel">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Danh sách lịch" styleClass="section-title">
+                    <font>
+                        <Font name="System Bold" size="18"/>
+                    </font>
+                </Label>
+
+                <!-- Filters -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Ngày:"/>
+                    <DatePicker fx:id="datePicker" prefWidth="150"/>
+                    
+                    <Label text="Danh mục:"/>
+                    <ComboBox fx:id="categoryFilter" prefWidth="120"/>
+                </HBox>
+
+                <!-- Search -->
+                <TextField fx:id="searchField" promptText="🔍 Tìm kiếm lịch..." 
+                          styleClass="search-field"/>
+
+                <!-- Table -->
+                <TableView fx:id="scheduleTable" VBox.vgrow="ALWAYS" styleClass="schedule-table">
+                    <columns>
+                        <TableColumn fx:id="titleColumn" text="Tiêu đề" prefWidth="200"/>
+                        <TableColumn fx:id="timeColumn" text="Thời gian" prefWidth="150"/>
+                        <TableColumn fx:id="categoryColumn" text="Danh mục" prefWidth="100"/>
+                        <TableColumn fx:id="reminderColumn" text="Nhắc" prefWidth="50" 
+                                    style="-fx-alignment: CENTER;"/>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                    </columnResizePolicy>
+                </TableView>
+
+                <!-- Action Buttons -->
+                <HBox spacing="10" alignment="CENTER">
+                    <Button fx:id="addButton" text="➕ Thêm" onAction="#handleAddSchedule" 
+                            styleClass="main-button" prefWidth="120" minWidth="60"/>
+                    <Button fx:id="editButton" text="✏️ Sửa" onAction="#handleEditSchedule" 
+                            styleClass="secondary-button" prefWidth="120" disable="true"/>
+                    <Button fx:id="deleteButton" text="🗑️ Xóa" onAction="#handleDeleteSchedule" 
+                            styleClass="danger-button" prefWidth="120" disable="true"/>
+                </HBox>
+            </VBox>
+
+            <!-- Right Panel - Details -->
+            <VBox spacing="15" styleClass="right-panel">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Chi tiết lịch" styleClass="section-title">
+                    <font>
+                        <Font name="System Bold" size="18"/>
+                    </font>
+                </Label>
+
+                <TextArea fx:id="detailsArea" editable="false" wrapText="true" 
+                         VBox.vgrow="ALWAYS" styleClass="details-area"
+                         promptText="Chọn một lịch để xem chi tiết..."/>
+            </VBox>
+
+        </SplitPane>
+    </center>
+
+</BorderPane>

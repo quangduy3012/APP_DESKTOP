@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.calendar.controller.RegisterController"
+      alignment="CENTER" spacing="20" styleClass="login-container">
+    
+    <padding>
+        <Insets top="40" right="40" bottom="40" left="40"/>
+    </padding>
+
+    <VBox alignment="CENTER" spacing="10">
+        <Label text="ĐĂNG KÝ TÀI KHOẢN" styleClass="app-title">
+            <font>
+                <Font name="System Bold" size="26"/>
+            </font>
+        </Label>
+        <Label text="Tạo tài khoản mới để bắt đầu" styleClass="subtitle">
+            <font>
+                <Font size="13"/>
+            </font>
+        </Label>
+    </VBox>
+
+    <VBox spacing="12" styleClass="form-container" alignment="CENTER">
+        <VBox spacing="5">
+            <Label text="Tên đăng nhập" styleClass="field-label"/>
+            <TextField fx:id="usernameField" promptText="Ít nhất 3 ký tự" 
+                      styleClass="input-field" />
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Email" styleClass="field-label"/>
+            <TextField fx:id="emailField" promptText="email@example.com" 
+                      styleClass="input-field" />
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Mật khẩu" styleClass="field-label"/>
+            <PasswordField fx:id="passwordField" promptText="Ít nhất 6 ký tự" 
+                          styleClass="input-field" />
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Xác nhận mật khẩu" styleClass="field-label"/>
+            <PasswordField fx:id="confirmPasswordField" promptText="Nhập lại mật khẩu" 
+                          styleClass="input-field" />
+        </VBox>
+
+        <Label fx:id="messageLabel" styleClass="message-label" visible="false" wrapText="true"/>
+
+        <Button fx:id="registerButton" text="Đăng ký" onAction="#handleRegister" 
+                styleClass="primary-button" >
+            <font>
+                <Font name="System Bold" size="14"/>
+            </font>
+        </Button>
+    </VBox>
+
+    <HBox alignment="CENTER" spacing="5">
+        <Label text="Đã có tài khoản?" styleClass="link-text"/>
+        <Hyperlink fx:id="loginLink" text="Đăng nhập" 
+                  onAction="#handleBackToLogin" styleClass="link"/>
+    </HBox>
+
+</VBox>
