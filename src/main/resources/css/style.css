@@ -353,3 +353,25 @@
     -fx-font-size: 12px;
     -fx-padding: 5 10 5 10;
 }
+
+.reload-btn {
+    -fx-background-color: #6f7ae0;
+    -fx-background-radius: 50;
+    -fx-pref-width: 36;
+    -fx-pref-height: 36;
+    -fx-cursor: hand;
+}
+
+.reload-btn Label {
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+
+.reload-btn:hover {
+    -fx-background-color: #5d67d6;
+}
+
+.reload-btn:pressed {
+    -fx-background-color: #4b55c4;
+}

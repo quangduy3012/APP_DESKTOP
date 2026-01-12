@@ -53,6 +53,13 @@
                     
                     <Label text="Danh mục:"/>
                     <ComboBox fx:id="categoryFilter" prefWidth="120"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                <Button onAction="#handleResetFilter" styleClass="reload-btn">
+                    <graphic>
+                 <Label text="🔄"/>
+                 </graphic>
+                </Button>
                 </HBox>
 
                 <!-- Search -->

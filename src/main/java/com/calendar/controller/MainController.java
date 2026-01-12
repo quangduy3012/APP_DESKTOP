@@ -147,6 +147,16 @@ public class MainController {
         List<Schedule> schedules = scheduleService.getAllSchedulesByUser(currentUserId);
         scheduleList.setAll(schedules);
     }
+@FXML
+private void handleResetFilter() {
+    // Reset UI
+    searchField.clear();
+    datePicker.setValue(null);
+    categoryFilter.setValue("Tất cả");
+
+    // Load lại dữ liệu ban đầu
+    loadSchedules();
+}
 
     /**
      * TÌM KIẾM THÔNG MINH - Query trực tiếp từ database
