@@ -1,11 +1,14 @@
 package com.calendar.service;
 
-import com.calendar.database.DatabaseManager;
-import com.calendar.model.User;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.sql.*;
-import java.time.LocalDateTime;
+import com.calendar.database.DatabaseManager;
+import com.calendar.model.User;
 
 public class UserService {
     private final DatabaseManager dbManager;
@@ -17,6 +20,7 @@ public class UserService {
     /**
      * Đăng ký người dùng mới
      */
+    @SuppressWarnings("CallToPrintStackTrace")
     public boolean register(String username, String password, String email) {
         if (username == null || username.trim().isEmpty() ||
             password == null || password.length() < 6 ||
@@ -51,6 +55,7 @@ public class UserService {
     /**
      * Đăng nhập
      */
+    @SuppressWarnings("CallToPrintStackTrace")
     public User login(String username, String password) {
         if (username == null || password == null) {
             return null;
@@ -89,6 +94,7 @@ public class UserService {
     /**
      * Lấy thông tin người dùng theo ID
      */
+    @SuppressWarnings("CallToPrintStackTrace")
     public User getUserById(int userId) {
         String sql = "SELECT * FROM users WHERE id = ?";
 
@@ -115,6 +121,7 @@ public class UserService {
     /**
      * Cập nhật thông tin người dùng
      */
+    @SuppressWarnings("CallToPrintStackTrace")
     public boolean updateUser(int userId, String email) {
         String sql = "UPDATE users SET email = ? WHERE id = ?";
 
@@ -134,6 +141,7 @@ public class UserService {
     /**
      * Đổi mật khẩu
      */
+    @SuppressWarnings("CallToPrintStackTrace")
     public boolean changePassword(int userId, String oldPassword, String newPassword) {
         User user = getUserById(userId);
         if (user == null) {
